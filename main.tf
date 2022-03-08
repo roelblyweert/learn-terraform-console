@@ -1,12 +1,21 @@
 terraform {
+  cloud {
+    organization = "davinsilabs"
+
+    workspaces {
+      name = "learn-terraform-console"
+    }
+  }
+}
+
+terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.0.0"
+      version = "4.4.0"
+
     }
   }
-
-  required_version = ">= 1.0.5"
 }
 
 provider "aws" {
@@ -17,8 +26,6 @@ resource "aws_s3_bucket" "data" {
   bucket_prefix = var.bucket_prefix
 
   force_destroy = true
-
-  acl = "private"
 }
 
 data "aws_s3_objects" "data_bucket" {
