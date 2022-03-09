@@ -1,14 +1,4 @@
 terraform {
-  cloud {
-    organization = "davinsilabs"
-
-    workspaces {
-      name = "learn-terraform-console"
-    }
-  }
-}
-
-terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
